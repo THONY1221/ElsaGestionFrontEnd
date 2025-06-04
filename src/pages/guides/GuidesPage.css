@@ -1,0 +1,55 @@
+.guides-landing-page .guide-category-card {
+  transition: all 0.3s ease;
+  height: 100%; /* Ensure cards in the same row have the same height */
+  display: flex;
+  flex-direction: column;
+}
+
+.guides-landing-page .guide-category-card .ant-card-body {
+  flex-grow: 1; /* Allows description to push button down if card height is fixed or flexed */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes title/icon up and description/button down */
+}
+
+.guides-landing-page .guide-category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Styles for Guide Detail Page - can be expanded */
+.guide-detail-page .ant-page-header-heading-title {
+  color: #003366;
+}
+
+.guide-detail-page .guide-content h3 {
+  color: #0055a4;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #e8e8e8;
+  padding-bottom: 8px;
+}
+
+.guide-detail-page .guide-content p {
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.guide-detail-page .guide-content .ant-steps-item-title {
+  font-weight: 500;
+}
+
+.guide-detail-page .guide-content .ant-alert {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.guide-detail-page .guide-media-placeholder {
+  background-color: #f0f2f5;
+  border: 1px dashed #d9d9d9;
+  padding: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  color: #888;
+}

@@ -1,0 +1,262 @@
+/* styles.css */
+
+/* Réinitialisation basique */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #f9fafb; /* bg-gray-50 */
+  color: #111827; /* text-gray-900 */
+  line-height: 1.6;
+}
+
+/* Classes de hauteur minimale */
+.min-h-screen {
+  min-height: 100vh;
+}
+
+/* Couleurs de fond */
+.bg-gray-50 {
+  background-color: #f9fafb;
+}
+.bg-white {
+  background-color: #ffffff;
+}
+.bg-gray-900 {
+  background-color: #111827;
+}
+.bg-gray-800 {
+  background-color: #1f2937;
+}
+
+/* Couleurs de texte */
+.text-gray-900 {
+  color: #111827;
+}
+.text-gray-500 {
+  color: #6b7280;
+}
+.text-gray-600 {
+  color: #4b5563;
+}
+.text-white {
+  color: #ffffff;
+}
+.text-blue-600 {
+  color: #2563eb;
+}
+
+/* Ombres */
+.shadow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.shadow-md {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.shadow-lg {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Bordures */
+.border {
+  border: 1px solid #e5e7eb;
+}
+.border-t {
+  border-top: 1px solid #e5e7eb;
+}
+.border-l {
+  border-left: 1px solid #e5e7eb;
+}
+.border-b {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Espacement */
+.p-4 {
+  padding: 1rem;
+}
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.m-4 {
+  margin: 1rem;
+}
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+.mb-4 {
+  margin-bottom: 1rem;
+}
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+.mb-8 {
+  margin-bottom: 2rem;
+}
+.mt-2 {
+  margin-top: 0.5rem;
+}
+.mt-4 {
+  margin-top: 1rem;
+}
+
+/* Flexbox utilitaires */
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.gap-2 {
+  gap: 0.5rem;
+}
+.gap-4 {
+  gap: 1rem;
+}
+
+/* Grille (inspiration Tailwind) */
+.grid {
+  display: grid;
+}
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (min-width: 640px) {
+  .sm\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1280px) {
+  .xl\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+/* Arrondir */
+.rounded {
+  border-radius: 0.25rem;
+}
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
+/* Overflow */
+.overflow-auto {
+  overflow: auto;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/* Cursor */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Transitions */
+.transition-all {
+  transition: all 0.3s ease;
+}
+.hover\:bg-gray-50:hover {
+  background-color: #f9fafb;
+}
+.hover\:shadow-md:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Utilitaires pour le texte */
+.font-medium {
+  font-weight: 500;
+}
+.font-bold {
+  font-weight: 700;
+}
+.text-sm {
+  font-size: 0.875rem;
+}
+.text-lg {
+  font-size: 1.125rem;
+}
+.text-xl {
+  font-size: 1.25rem;
+}
+.text-2xl {
+  font-size: 1.5rem;
+}
+.text-3xl {
+  font-size: 1.875rem;
+}
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Classes pour Ant Design Overrides (exemple) */
+.ant-table {
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+.ant-modal-content {
+  border-radius: 8px;
+}
+
+/* Personnalisation des scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(107, 114, 128, 0.4);
+  border-radius: 4px;
+}
+
+/* Styles pour le modal custom dans le POS */
+.modal-header {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #111827;
+    color: #d1d5db;
+  }
+  .bg-gray-50 {
+    background-color: #1f2937;
+  }
+  .bg-white {
+    background-color: #1f2937;
+  }
+  .ant-modal-content {
+    background-color: #1f2937;
+    color: #d1d5db;
+  }
+}

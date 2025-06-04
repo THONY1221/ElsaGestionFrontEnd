@@ -1,0 +1,214 @@
+@import url("../styles/vars.css");
+
+/* src/pages/ElsaLandingPage.css */
+
+/* Add any custom styles for the landing page here if Tailwind isn't enough */
+
+/* Example: Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+.elsagestion-landing {
+  /* You can define global font styles or other base styles here if needed */
+  /* Example: Using a specific font stack if not already in tailwind.config.js 
+  font-family: 'Inter', sans-serif; 
+  */
+}
+
+/* You might want to add styles for animations or specific component overrides */
+
+/* ElsaLandingPage.css - Styles personnalisés */
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse-slow {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes bounce-gentle {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-12px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Animation utility classes */
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 6s ease-in-out infinite;
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 2s infinite;
+}
+
+/* Brand gradient */
+.bg-brand-gradient {
+  background: linear-gradient(130deg, #102a43 0%, #1e3a5f 50%, #0f365c 100%);
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom focus styles */
+*:focus {
+  outline: 2px solid rgba(59, 130, 246, 0.5);
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 6px;
+  border: 3px solid #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Gradient text utility */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Image loading improvement */
+img {
+  transition: opacity 0.3s ease;
+}
+
+img.lazy-load {
+  opacity: 0;
+}
+
+img.lazy-loaded {
+  opacity: 1;
+}
+
+/* CSS custom properties for theme colors */
+:root {
+  --color-primary: #2563eb;
+  --color-primary-light: #3b82f6;
+  --color-primary-dark: #1d4ed8;
+  --color-secondary: #e11d48;
+  --color-secondary-light: #f43f5e;
+  --color-secondary-dark: #be123c;
+  --color-text: #334155;
+  --color-text-light: #64748b;
+  --color-background: #ffffff;
+  --color-background-alt: #f1f5f9;
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+  h1 {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+  }
+
+  h2 {
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+  }
+
+  h3 {
+    font-size: clamp(1.25rem, 4vw, 1.75rem);
+  }
+}
+
+/* Print styles */
+@media print {
+  .elsagestion-landing {
+    color: black;
+    background: white;
+  }
+
+  .elsagestion-landing header,
+  .elsagestion-landing footer,
+  .elsagestion-landing button,
+  .elsagestion-landing .no-print {
+    display: none;
+  }
+}
+
+/* Accessibility improvements */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal;
+}
+
+/* Fix for focus ring on buttons */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

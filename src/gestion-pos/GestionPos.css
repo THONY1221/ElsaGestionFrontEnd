@@ -1,0 +1,140 @@
+/* Définition des variables de couleurs pour le thème clair et sombre */
+:root {
+  --primary-color: #1890ff;
+  --light-bg: #f0f2f5;
+  --light-header-bg: #fff;
+  --light-text-color: #000;
+
+  --dark-bg: #141414;
+  --dark-header-bg: #001529;
+  --dark-card-bg: #1f1f1f;
+  --dark-text-color: #fff;
+  --dark-border-color: #555;
+}
+
+/* Mode clair (par défaut) */
+body {
+  background-color: var(--light-bg);
+  color: var(--light-text-color);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Styles globaux appliqués lorsque la classe "dark-mode" est présente */
+.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--dark-text-color);
+}
+
+.dark-mode .ant-layout-header {
+  background-color: var(--dark-header-bg) !important;
+  color: var(--dark-text-color);
+  transition: background 0.3s, color 0.3s;
+}
+
+.dark-mode .ant-layout-content {
+  background-color: var(--dark-bg);
+  color: var(--dark-text-color);
+}
+
+.dark-mode .ant-card {
+  background-color: var(--dark-card-bg);
+  color: var(--dark-text-color);
+  border-color: var(--dark-border-color);
+}
+
+.dark-mode .ant-input,
+.dark-mode .ant-select-dropdown,
+.dark-mode .ant-modal {
+  background-color: #333;
+  color: var(--dark-text-color);
+}
+
+.dark-mode .ant-select-item,
+.dark-mode .ant-select-item-option {
+  background-color: #333;
+  color: var(--dark-text-color);
+}
+
+.dark-mode .ant-select-item-option-active {
+  background-color: var(--primary-color) !important;
+}
+
+.dark-mode .ant-btn {
+  background-color: #333;
+  color: var(--dark-text-color);
+  border-color: var(--dark-border-color);
+}
+
+.dark-mode .ant-btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* Transitions globales pour une expérience fluide */
+.ant-layout,
+.ant-card,
+.ant-modal,
+.ant-input,
+.ant-select-dropdown,
+.ant-btn {
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Styles personnalisés pour le conteneur de recherche */
+#search-container {
+  position: relative;
+}
+
+#search-container .search-dropdown {
+  position: absolute;
+  z-index: 1000;
+  background-color: #fff;
+  width: 100%;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.dark-mode #search-container .search-dropdown {
+  background-color: #333;
+  border-color: var(--dark-border-color);
+}
+
+/* Styles pour le conteneur du scanner QR */
+#scanner-container {
+  margin: auto;
+  max-width: 300px;
+}
+
+/* Adaptation responsive pour la navigation mobile et autres éléments */
+@media (max-width: 768px) {
+  .ant-layout-footer {
+    padding: 10px 15px !important;
+  }
+}
+
+/* Optionnel : Ajout d'animations subtiles sur le hover des boutons et cartes */
+.ant-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ant-btn:hover {
+  filter: brightness(1.05);
+}
+
+/* Personnalisation de la barre de navigation mobile */
+@media (max-width: 1024px) {
+  .ant-layout-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+/* Pour la barre verticale dans le panier */
+.cart-scroll {
+  max-height: 400px; /* Ajustez cette valeur si nécessaire */
+  overflow-y: auto;
+}

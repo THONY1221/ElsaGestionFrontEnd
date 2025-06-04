@@ -1,0 +1,129 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.main-header {
+  background: linear-gradient(90deg, #003366, #990000);
+  padding: 2px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  border-radius: 0px;
+  height: 40px;
+}
+
+.main-nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2px;
+}
+
+.main-nav .menu {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-item {
+  position: relative;
+  margin: auto;
+  padding: 0 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  transform: scale(1.05);
+  transform: 1.5s ease;
+}
+
+.menu-item a {
+  color: white;
+  text-decoration: none;
+}
+
+.menu-item a:hover {
+  color: #ff6600;
+}
+
+.menu-item .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  text-align: left;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 10px 0;
+  border-radius: 5px;
+  z-index: 10;
+  min-width: 200px;
+}
+
+.menu-item .submenu li {
+  padding: 8px 15px;
+  margin: 2px 0;
+}
+
+.menu-item .submenu li:hover {
+  background-color: #760628ee;
+  border-radius: 5px;
+  color: #f4f4f4;
+  margin: 0;
+}
+
+.menu-item .submenu li a {
+  text-decoration: none;
+  color: #003366;
+}
+
+.submenu li :hover {
+  color: #f4f4f4;
+}
+
+.menu-item:hover .submenu {
+  display: block;
+}
+
+.main-nav .menu-item:first-child {
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+h2,
+h3 {
+  font-family: Arial, sans-serif;
+  color: #003366;
+}
+
+button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  background-color: #003366;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #990000;
+}

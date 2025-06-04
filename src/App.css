@@ -1,0 +1,604 @@
+/* Réinitialisation */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212; /* Fond sombre */
+  color: #fff; /* Texte en blanc */
+}
+
+/* Conteneur global */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Navbar futuriste et affinée */
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(167, 140, 140);
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #333;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Logo */
+.logo-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo-image {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  margin-right: 8px; /* Ajout d'une marge à droite */
+  margin-top: 10px;
+}
+
+/* Navigation principale */
+.main-nav {
+  position: relative;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Items du menu */
+.menu-item {
+  position: relative;
+}
+
+.menu-item a,
+.menu-item span {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s;
+  display: flex; /* Pour aligner l'icône et le texte */
+  align-items: center; /* Centrer verticalement */
+}
+
+/* Style pour les icônes de menu */
+.menu-icon {
+  margin-right: 10px;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px; /* Assure une largeur minimale pour l'icône */
+  flex-shrink: 0; /* Empêche l'icône de rétrécir */
+}
+
+.menu-item a:hover,
+.menu-item span:hover {
+  color: #00e6ff;
+}
+
+/* Indicateur de sous-menu */
+.submenu-indicator {
+  margin-left: 0.3rem;
+  font-size: 0.8rem;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* Rotation de la flèche pour les sous-menus horizontaux */
+.submenu-indicator-right {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+/* Sous-menu */
+.submenu {
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #1f1f1f;
+  padding: 0.03rem 0;
+  border: 1px solid #333;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 100;
+  min-width: 250px;
+}
+
+.submenu li {
+  position: relative;
+  padding: 0.15rem 0.4rem;
+  margin: 0; /* Supprime toute marge par défaut */
+}
+
+.submenu2 {
+  list-style: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: rgb(242, 242, 242);
+  padding: 0.03rem 0;
+  border: 1px solid #333;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  min-width: 250px;
+  z-index: 100;
+  border-radius: 5px;
+  color: rgb(8, 8, 8);
+}
+
+/* Ajout du style pour le troisième niveau de menu */
+.submenu3 {
+  list-style: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: rgb(230, 230, 230);
+  padding: 0.03rem 0;
+  border: 1px solid #333;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  min-width: 250px;
+  z-index: 110; /* Plus élevé que les autres menus */
+  border-radius: 5px;
+  color: rgb(8, 8, 8);
+}
+
+.submenu li:hover > .submenu2 {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.submenu2 li:hover > .submenu3 {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.submenu2 li > a:hover {
+  color: rgb(242, 242, 242);
+}
+
+.submenu3 li > a:hover {
+  color: rgb(242, 242, 242);
+}
+
+.has-submenu:hover > .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.submenu li a {
+  color: #fff;
+  font-size: 0.9rem;
+  display: flex; /* Assure que l'icône et le texte soient côte à côte */
+  align-items: center; /* Centre verticalement l'icône et le texte */
+  padding: 0.12rem 0;
+  line-height: 1.1;
+  width: 100%; /* Assure que le lien prend toute la largeur disponible */
+}
+
+.submenu2 li a {
+  padding: 0.12rem 0;
+  line-height: 1.1;
+  display: flex; /* Assure que l'icône et le texte soient côte à côte */
+  align-items: center; /* Centre verticalement l'icône et le texte */
+  color: #333; /* Couleur pour meilleure lisibilité sur fond clair */
+}
+
+.submenu3 li a {
+  padding: 0.12rem 0;
+  line-height: 1.1;
+  display: flex; /* Assure que l'icône et le texte soient côte à côte */
+  align-items: center; /* Centre verticalement l'icône et le texte */
+  color: #333; /* Couleur pour meilleure lisibilité sur fond clair */
+}
+
+.submenu li a:hover {
+  color: #00e6ff;
+}
+
+.submenu2 li a:hover,
+.submenu3 li a:hover {
+  color: #00e6ff; /* Couleur commune au survol */
+}
+
+/* Bouton hamburger (visible sur mobile) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
+  padding: 0.5rem;
+}
+
+.hamburger-line {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Styles for the section containing LeftSideNav and RightSideNav */
+.top-section-below-header {
+  display: flex;
+  justify-content: space-between; /* Keeps them apart on larger screens */
+  padding: 1rem; /* Add some padding */
+  /* background-color: #1a1a1a; */ /* Old dark background */
+  background-color: #ffffff; /* New white background to match main content */
+  gap: 1rem; /* Space between LeftSideNav and RightSideNav */
+  border-bottom: 1px solid #e8e8e8; /* Optional: a light border to separate from main content if needed */
+}
+
+/* Basic styling for side navs - can be expanded in their respective CSS */
+.left-side-nav-container, /* Assuming LeftSideNav component has such a root class */
+.right-side-nav-container {
+  /* Assuming RightSideNav component has such a root class */
+  flex-basis: 200px; /* Example starting width */
+  /* Add more base styles if needed, e.g., padding, background */
+}
+
+/* ------------ MENU MOBILE STYLE VERTICAL ACCORDÉON ------------ */
+@media (max-width: 768px) {
+  /* Header pour le mobile */
+  .main-header {
+    position: sticky;
+    top: 0;
+    z-index: 1300;
+    background-color: #102040; /* Couleur du header visible */
+  }
+
+  /* Bouton hamburger */
+  .menu-toggle {
+    display: flex;
+    z-index: 1350;
+    padding: 10px;
+  }
+
+  /* Animation du bouton hamburger */
+  .menu.open ~ .menu-toggle .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menu.open ~ .menu-toggle .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu.open ~ .menu-toggle .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Menu principal vertical */
+  .menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: -80%; /* Ajusté pour la nouvelle largeur */
+    width: 80%; /* Changé de 100% à 80% */
+    max-width: 320px; /* Ajout d'une largeur maximale pour les écrans plus larges en mode mobile */
+    height: 100vh;
+    background-color: #102040; /* Bleu foncé comme dans l'image */
+    overflow-y: auto;
+    padding-top: 50px; /* Espace pour le header */
+    transition: left 0.3s ease;
+    z-index: 1250;
+    margin: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Assurer que les éléments du menu sont dans le bon ordre */
+  .menu > li {
+    position: relative;
+    z-index: auto;
+  }
+
+  /* Quand menu ouvert */
+  .menu.open {
+    left: 0;
+  }
+
+  /* Items du menu principal */
+  .menu-item {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu-item:last-child {
+    border-bottom: none;
+  }
+
+  /* Style des liens principaux */
+  .menu-item > a,
+  .menu-item > span {
+    padding: 16px 20px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: background 0.2s ease;
+    text-decoration: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Style pour les icônes */
+  .menu-icon {
+    margin-right: 15px;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    width: 20px;
+    text-align: center;
+  }
+
+  /* Indicateurs de sous-menu */
+  .submenu-indicator,
+  .submenu-indicator-right {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s;
+    font-size: 10px;
+  }
+
+  /* Rotation de l'indicateur quand sous-menu ouvert */
+  .submenu-indicator.open,
+  .submenu-indicator-right.open {
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  /* Structure en accordéon - Nécessite display: none à l'état fermé pour un véritable accordéon */
+  .menu-item.has-submenu {
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Important pour contenir ses sous-menus */
+  }
+
+  /* Style de base pour tous les sous-menus - ACCORDÉON */
+  .submenu,
+  .submenu2,
+  .submenu3 {
+    display: none; /* Complètement caché quand fermé (pas juste max-height: 0) */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: static; /* Force le positionnement statique en mode mobile */
+    transform: none; /* Aucune transformation qui pourrait causer des superpositions */
+    opacity: 1; /* Pleine opacité quand visible */
+    visibility: visible; /* Toujours visible quand affiché */
+    box-shadow: none; /* Pas d'ombre qui donnerait l'impression de flotter */
+  }
+
+  /* Quand un sous-menu est visible, il s'affiche en block et pousse les éléments suivants */
+  .submenu.visible,
+  .submenu2.visible,
+  .submenu3.visible {
+    display: block;
+  }
+
+  /* Assurer que les sous-menus sont complètement contenus dans leur parent et dans le flux normal */
+  .menu-item.has-submenu > .submenu.visible {
+    position: static;
+  }
+
+  /* ---------- Styles spécifiques à chaque niveau de sous-menu ---------- */
+
+  /* Sous-menu de premier niveau (sous "Gestion Commerciale" et "Admin") */
+  .submenu {
+    background-color: inherit; /* Use parent module background for consistency */
+  }
+
+  /* Correction de l'empilement des sous-menus */
+  .menu > li:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Assurer que les sous-menus restent dans le flux normal du document */
+  .menu-item.has-submenu .submenu,
+  .submenu li .submenu2,
+  .submenu2 li .submenu3 {
+    position: static;
+    width: 100%;
+  }
+
+  .submenu > li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .submenu > li > a,
+  .submenu > li > span {
+    padding: 14px 20px;
+    color: #ffffff; /* White text for readability on dark background */
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-decoration: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Sous-menu de deuxième niveau */
+  .submenu2 {
+    background-color: inherit; /* Use parent module background */
+  }
+
+  .submenu2 > li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .submenu2 > li:last-child {
+    border-bottom: none;
+  }
+
+  .submenu2 > li > a,
+  .submenu2 > li > span {
+    padding: 14px 20px 14px 40px; /* Plus d'indentation */
+    color: #fff; /* Texte blanc sur fond bordeaux */
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-decoration: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Sous-menu de troisième niveau */
+  .submenu3 {
+    background-color: inherit; /* Use parent module background */
+  }
+
+  .submenu3 > li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .submenu3 > li:last-child {
+    border-bottom: none;
+  }
+
+  .submenu3 > li > a {
+    padding: 13px 20px 13px 60px; /* Encore plus d'indentation */
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Effets de survol et états actifs pour les éléments de menus */
+  .menu-item > a:active,
+  .menu-item > span:active,
+  .submenu > li > a:active,
+  .submenu > li > span:active,
+  .submenu2 > li > a:active,
+  .submenu2 > li > span:active,
+  .submenu3 > li > a:active {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Style spécial pour les éléments actifs */
+  .menu-item.has-submenu.active > span,
+  .submenu > li.active > a,
+  .submenu > li.active > span {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  /* Style pour "Gestion Commerciale" et "Admin" quand ils sont cliqués */
+  .menu-item.has-submenu > span {
+    background-color: #102040; /* Même bleu foncé que le menu principal */
+    color: white;
+    font-weight: 600;
+  }
+
+  /* Éviter le débordement du contenu */
+  .menu-item.has-submenu > ul.submenu > li {
+    position: relative; /* Assure que les sous-éléments restent dans le flux */
+  }
+
+  /* Assurer que les sous-menus ne se superposent pas */
+  .menu > li.has-submenu:nth-child(2) ul.submenu.visible + li.has-submenu,
+  .menu > li.has-submenu:nth-child(2) ul.submenu.visible ~ li {
+    margin-top: auto; /* Laisse l'espacement naturel */
+  }
+
+  /* Adaptation de la section sous le header */
+  .top-section-below-header {
+    flex-direction: column;
+    align-items: stretch;
+    padding-top: 0; /* Réduire le padding car le menu flottant prend de la place */
+  }
+
+  .left-side-nav-container,
+  .right-side-nav-container {
+    flex-basis: auto;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .right-side-nav-container {
+    margin-bottom: 0;
+  }
+
+  /* Masquer le contenu principal quand le menu est ouvert */
+  .menu.open ~ .main-content {
+    display: none;
+  }
+}
+
+/* Contenu principal */
+.main-content {
+  flex: 1;
+  padding: 1.5rem;
+  background-color: #ffffff !important;
+}
+
+/* Style de la nav droite */
+/* Zone de sélection droite fixe */
+.right-nav {
+  position: fixed;
+  top: 35px;
+  right: 0;
+  background-color: #fff;
+  padding: 0.5rem;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0 0 5px 5px;
+  z-index: 999;
+}
+
+/* Pour que les deux Select soient alignés sur une même ligne, on utilise l'espace (Space d'antd) */
+
+.right-nav .dropdown-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.right-nav label {
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  color: #333;
+}
+
+/* Style des listes déroulantes */
+.right-nav select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 0.9rem;
+  color: #333;
+}

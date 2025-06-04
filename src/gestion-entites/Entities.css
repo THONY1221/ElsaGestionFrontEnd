@@ -1,0 +1,246 @@
+.entities-container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+    
+  }
+  
+  .form-container {
+    /* background: #f9f9f9; */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.438);
+    margin-bottom: 30px;
+  }
+  
+  .entity-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .entity-form .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .entity-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .entity-form input[type="text"],
+  .entity-form input[type="number"],
+  .entity-form input[type="file"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .entity-form input[type="file"] {
+    padding: 5px;
+  }
+  
+  .btn-submit {
+    grid-column: span 2;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background: #032c58;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .btn-submit:hover {
+    background: #0056b3;
+  }
+  
+  .toggle-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .toggle-btn {
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    border: none;
+    background: #890606;
+    margin: 0 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .toggle-btn.active {
+    background: #032c58;
+    color: #fff;
+  }
+  
+  .toggle-btn:hover {
+    background: #0056b3;
+    color: #fff;
+  }
+  
+  .entity-list {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(16, 16, 16, 0.1);
+  }
+  
+  .entity-list h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .entity-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .entity-list th,
+  .entity-list td {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .entity-list td{
+    border: 1px solid black;
+    border-radius: 15px;
+    border-top: white;
+  }
+  
+  .entity-list th {
+    background: #032c58;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+
+   
+  }
+  
+  .entity-list tr:hover {
+    background: #f1f1f1;
+  }
+  
+  .btn-edit,
+  .btn-delete {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .btn-edit {
+    background: #28a745;
+    margin-right: 5px;
+  }
+  
+  .btn-edit:hover {
+    background: #1c7a30;
+  }
+  
+  .btn-delete {
+    background: #dc3545;
+    margin-left: 5px;
+  }
+  
+  .btn-delete:hover {
+    background: #a71d2a;
+  }
+  
+  .entity-logo {
+    width: 40px; /* Ajustez la taille de l'image */
+    height: 40px; /* Pour garder les proportions carrées */
+    border-radius: 5px;
+    object-fit: contain; /* Pour s'assurer que toute l'image est visible */
+    display: block;
+    margin: 0 auto; /* Centrer l'image */
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2); /* Optionnel : ajoute un effet d'ombre */
+  }
+  
+  .no-logo {
+    font-style: italic;
+    color: #999;
+    text-align: center;
+    display: block;
+  }
+  /* .btn-cancel {
+    grid-column: span 2;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background: #dc3545;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+  } */
+  
+  .btn-cancel:hover {
+    background: #a71d2a;
+  }
+
+  /* Ajoutez ce style pour le conteneur des boutons */
+.form-buttons {
+  grid-column: span 2; /* Prendre toute la largeur du formulaire */
+  display: flex;
+  justify-content: flex-end; /* Aligner les boutons à droite */
+  gap: 10px; /* Espace entre les boutons */
+  margin-top: 20px; /* Espace au-dessus des boutons */
+}
+
+/* Ajustez la taille des boutons pour qu'ils s'adaptent à leur contenu */
+.btn-submit,
+.btn-cancel {
+  padding: 10px 20px; /* Ajustez le padding pour que le texte soit bien centré */
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  white-space: nowrap; /* Empêcher le texte de se diviser sur plusieurs lignes */
+}
+
+/* Style spécifique pour le bouton "Soumettre" */
+.btn-submit {
+  background: #007bff;
+}
+
+.btn-submit:hover {
+  background: #0056b3;
+}
+
+/* Style spécifique pour le bouton "Annuler" */
+.btn-cancel {
+  background: #dc3545;
+}
+
+.btn-cancel:hover {
+  background: #a71d2a;
+}

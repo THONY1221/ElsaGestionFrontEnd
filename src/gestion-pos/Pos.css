@@ -1,0 +1,109 @@
+.pos-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f4f4f9;
+  }
+  
+  .produits-container, .commande-container {
+    width: 48%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .categories {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .categories button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .categories button:hover {
+    background-color: #0056b3;
+  }
+  
+  .produits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .produit {
+    width: 30%;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .produit:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .produit img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  
+  .commande-details {
+    margin-top: 20px;
+  }
+  
+  .commande-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .commande-item button {
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .commande-item button:hover {
+    background-color: #a71d2a;
+  }
+  
+  .totals {
+    margin-top: 20px;
+  }
+  
+  .totals input, .totals select {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #218838;
+  }
+  

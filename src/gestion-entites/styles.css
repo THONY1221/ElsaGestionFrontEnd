@@ -1,0 +1,33 @@
+.gestion-entitie-container {
+  padding: 24px;
+}
+
+.header-container {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.add-button {
+  /* Suppression de margin-left: auto; pour positionner le bouton à gauche */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .gestion-entitie-container {
+    padding: 16px;
+  }
+
+  .header-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .add-button {
+    width: 100%;
+    /* Suppression de margin-left: 0; car nous n'utilisons plus margin-left: auto; */
+  }
+}

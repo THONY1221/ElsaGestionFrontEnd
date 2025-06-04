@@ -1,0 +1,45 @@
+/* Styles pour le composant GestionRetourVente */
+
+/* Style pour le conteneur principal */
+.gestion-retour-vente {
+  padding-top: 20px;
+}
+
+/* Style pour l'en-tête de la page */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  margin-top: 30px; /* Marge supérieure plus importante pour descendre les boutons */
+}
+
+/* Style pour la section titre */
+.title-section {
+  flex: 1;
+}
+
+/* Styles pour les boutons d'action */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-right: 10px;
+  position: relative;
+  top: 10px; /* Ajustement vertical */
+}
+
+/* Style spécifique pour le bouton d'export et de nouveau retour */
+.export-button,
+.new-return-button {
+  margin-top: 5px; /* Marge supplémentaire pour les boutons spécifiques */
+}
+
+/* Ajustement vertical du Card contenant le tableau */
+.gestion-retour-vente .ant-card {
+  position: relative;
+  top: 20px;
+  margin-bottom: 30px;
+}
+
+/* Vous pouvez ajouter vos styles spécifiques ici */

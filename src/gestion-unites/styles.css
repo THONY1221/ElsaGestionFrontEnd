@@ -1,0 +1,113 @@
+* *::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Conteneur principal de l'application */
+.gestion-produit-container,
+.gestion-unites-container {
+  padding: 20px;
+}
+
+/* Styles pour le header et la section de filtres */
+.header-section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.header-section .button-group {
+  margin-bottom: 10px;
+}
+
+.header-section .filter-section {
+  margin-top: 10px;
+}
+
+/* Pour les écrans moyens et supérieurs, afficher en ligne */
+@media (min-width: 768px) {
+  .header-section {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* Table (pour Ant Design, la table reprend la majeure partie de son style via la bibliothèque) */
+.ant-table {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Pagination */
+.pagination-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Formulaire produit / unité */
+.product-form,
+.unit-form {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Modal custom (pour arrondir les angles de la modale) */
+.ant-modal-content {
+  border-radius: 8px;
+}
+
+/* Boutons d'action (exemple de transition et d'espacement) */
+button {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Exemple de classes utilitaires si besoin de compléter */
+.text-center {
+  text-align: center;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+/* Ajustements pour le mode sombre */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1f2937;
+    color: #d1d5db;
+  }
+  .gestion-produit-container,
+  .gestion-unites-container {
+    background-color: #111827;
+    color: #d1d5db;
+  }
+  .header-section .filter-section input,
+  .header-section .filter-section select {
+    background-color: #374151;
+    border-color: #4b5563;
+    color: #d1d5db;
+  }
+  .ant-table {
+    background-color: #1f2937;
+    color: #d1d5db;
+  }
+  .ant-modal-content {
+    background-color: #1f2937;
+    color: #d1d5db;
+  }
+}

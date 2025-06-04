@@ -1,0 +1,259 @@
+.ticket-caisse-header {
+  text-align: center;
+  border-bottom: 1px dotted #ddd !important;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.ticket-caisse-logo {
+  width: 150px;
+  max-height: 100px;
+  margin: 0 auto;
+  display: block;
+  object-fit: contain;
+}
+
+.ticket-caisse-company {
+  text-align: center;
+  margin-top: 5px;
+  border-bottom: 2px dotted #ddd !important;
+  padding-bottom: 10px;
+}
+
+.ticket-caisse-company h2 {
+  margin-bottom: 5px;
+}
+
+.ticket-caisse-company p {
+  white-space: pre;
+  margin-bottom: 0;
+}
+
+.ticket-caisse-info {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.ticket-caisse-client {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.ticket-caisse-title {
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.ticket-caisse-produits {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-top: 1px dotted #ddd;
+  border-bottom: 1px dotted #ddd;
+}
+
+.ticket-caisse-produits table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ticket-caisse-produits thead td {
+  font-weight: bold;
+  padding: 5px;
+  background-color: #f5f5f5;
+}
+
+.ticket-caisse-produit {
+  border-bottom: 1px dotted #ddd !important;
+}
+
+.ticket-caisse-produit td {
+  padding: 5px;
+}
+
+.ticket-caisse-total {
+  margin-top: 10px;
+  border-top: 2px dotted #ddd !important;
+  border-bottom: 2px dotted #ddd !important;
+  padding: 10px 0;
+}
+
+.ticket-caisse-total table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ticket-caisse-paiement {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.ticket-caisse-paiement table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ticket-caisse-paiement thead td {
+  font-weight: bold;
+  padding: 5px;
+  background-color: #f5f5f5;
+}
+
+.ticket-caisse-paiement-row {
+  border-top: 2px dotted #ddd !important;
+  border-bottom: 2px dotted #ddd !important;
+}
+
+.ticket-caisse-merci {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.ticket-caisse-barcode {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.ticket-caisse-qrcode {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.ticket-caisse-bouton {
+  text-align: center !important;
+  margin-top: 10px;
+}
+
+.ticket-caisse-preview {
+  background: #fff;
+  padding: 15px;
+  border-radius: 4px;
+  max-height: 600px;
+  overflow-y: auto;
+  font-size: 12px;
+  width: 100% !important;
+  max-width: 280px !important;
+  margin: 0 auto !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e8e8e8;
+}
+
+.ticket-caisse-preview table {
+  width: 100%;
+  table-layout: fixed;
+  font-size: 11px;
+}
+
+.ticket-caisse-preview .ticket-caisse-client td {
+  font-size: 10px;
+  padding: 2px;
+  word-wrap: break-word;
+}
+
+.ticket-caisse-preview .ticket-caisse-produits thead td {
+  font-size: 10px;
+  padding: 3px 1px;
+  text-align: center;
+}
+
+.ticket-caisse-preview .ticket-caisse-produit td {
+  font-size: 10px;
+  padding: 2px 1px;
+  word-wrap: break-word;
+}
+
+.ticket-caisse-preview .ticket-caisse-produits table thead td:nth-child(1) {
+  width: 8%;
+}
+.ticket-caisse-preview .ticket-caisse-produits table thead td:nth-child(2) {
+  width: 42%;
+}
+.ticket-caisse-preview .ticket-caisse-produits table thead td:nth-child(3) {
+  width: 12%;
+}
+.ticket-caisse-preview .ticket-caisse-produits table thead td:nth-child(4) {
+  width: 18%;
+}
+.ticket-caisse-preview .ticket-caisse-produits table thead td:nth-child(5) {
+  width: 20%;
+}
+
+.ticket-caisse-preview .ticket-caisse-produit td:nth-child(1) {
+  width: 8%;
+  text-align: center;
+}
+.ticket-caisse-preview .ticket-caisse-produit td:nth-child(2) {
+  width: 42%;
+}
+.ticket-caisse-preview .ticket-caisse-produit td:nth-child(3) {
+  width: 12%;
+  text-align: center;
+}
+.ticket-caisse-preview .ticket-caisse-produit td:nth-child(4) {
+  width: 18%;
+  text-align: right;
+}
+.ticket-caisse-preview .ticket-caisse-produit td:nth-child(5) {
+  width: 20%;
+  text-align: right;
+}
+
+.ticket-caisse-preview .ticket-caisse-logo {
+  max-width: 120px;
+  max-height: 80px;
+}
+
+.ticket-caisse-preview .ticket-caisse-paiement table {
+  font-size: 10px;
+}
+
+.ticket-caisse-preview .ticket-caisse-paiement td {
+  padding: 3px;
+  text-align: center;
+}
+
+.ticket-caisse-preview .ticket-caisse-total table {
+  font-size: 10px;
+}
+
+.ticket-caisse-preview .ticket-caisse-total td {
+  padding: 3px;
+  text-align: center;
+}
+
+@media (max-width: 400px) {
+  .ticket-caisse-preview {
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+}
+
+/* Styles d'impression */
+@media print {
+  body {
+    font-size: 12px;
+    color: #000;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+
+  .ticket-caisse-container {
+    width: 80mm;
+    max-width: 80mm;
+    margin: 0;
+    padding: 5px;
+  }
+
+  .ticket-caisse-preview {
+    padding: 0;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .ticket-caisse-logo {
+    max-width: 100%;
+  }
+}

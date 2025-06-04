@@ -1,0 +1,35 @@
+.support-page-container {
+  /* Ensures the background color covers the whole page if content is short */
+}
+
+.contact-card {
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  height: 100%; /* Ensures cards in the same row have the same height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes title/icon up and description/button down */
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.contact-card-title {
+  color: #003366; /* Match main title color */
+  margin-bottom: 8px;
+}
+
+.contact-link {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.social-link svg {
+  transition: transform 0.2s ease-in-out;
+}
+
+.social-link:hover svg {
+  transform: scale(1.2);
+}

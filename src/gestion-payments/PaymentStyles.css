@@ -1,0 +1,37 @@
+/* Styles pour les modules de paiement */
+
+/* Style pour mettre en évidence les commandes à payer */
+.order-needs-payment {
+  background-color: rgba(250, 219, 20, 0.1); /* Fond jaune très léger */
+}
+
+/* Style pour les commandes sélectionnées */
+.ant-table-row.ant-table-row-selected > td {
+  background-color: #e6f7ff !important; /* Bleu très clair pour les lignes sélectionnées */
+}
+
+/* Animation pour attirer l'attention sur les nouvelles commandes chargées */
+@keyframes highlight {
+  from {
+    background-color: rgba(250, 219, 20, 0.3);
+  }
+  to {
+    background-color: rgba(250, 219, 20, 0.1);
+  }
+}
+
+.new-order-loaded {
+  animation: highlight 2s ease-in-out;
+}
+
+/* Style pour les montants dus */
+.due-amount {
+  color: #f5222d; /* Rouge pour indiquer une dette */
+  font-weight: bold;
+}
+
+/* Style pour les montants partiellement payés */
+.partial-payment {
+  color: #fa8c16; /* Orange pour les paiements partiels */
+  font-weight: bold;
+}
