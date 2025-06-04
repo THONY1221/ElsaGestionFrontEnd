@@ -1,10 +1,10 @@
 // RightSideNav.jsx
 import React, { useState, useEffect, useMemo } from "react";
 import { Select, Space, message, Spin } from "antd";
-import axios from "axios";
 import { DownOutlined } from "@ant-design/icons";
 import { useSelection } from "./SelectionContext";
 import { useAuth } from "./context/AuthContext";
+import { companiesApi, warehousesApi } from "./api/supabaseApi";
 
 const { Option } = Select;
 
@@ -18,46 +18,65 @@ const RightSideNav = () => {
 
   const { user, isLoading: authLoading } = useAuth();
 
-  const assignedWarehouses = useMemo(() => {
-    return user && Array.isArray(user.assigned_warehouses)
-      ? user.assigned_warehouses
-      : [];
-  }, [user]);
+  const [companies, setCompanies] = useState([]);
+  const [warehouses, setWarehouses] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const availableCompanies = useMemo(() => {
-    if (!assignedWarehouses || assignedWarehouses.length === 0) return [];
-
-    const companyMap = new Map();
-    assignedWarehouses.forEach((wh) => {
-      if (wh.company_id && !companyMap.has(wh.company_id)) {
-        companyMap.set(wh.company_id, {
-          id: wh.company_id,
-          name: wh.company_name || `Entreprise ID ${wh.company_id}`,
-        });
+  // Charger les entreprises depuis Supabase
+  useEffect(() => {
+    const loadCompanies = async () => {
+      try {
+        setLoading(true);
+        const companiesData = await companiesApi.getAll();
+        setCompanies(companiesData);
+      } catch (error) {
+        console.error("Erreur lors du chargement des entreprises:", error);
+        message.error("Erreur lors du chargement des entreprises");
+      } finally {
+        setLoading(false);
       }
-    });
-    return Array.from(companyMap.values());
-  }, [assignedWarehouses]);
+    };
 
-  const warehousesForSelectedCompany = useMemo(() => {
-    if (!selectedCompany || !assignedWarehouses) return [];
-    return assignedWarehouses.filter((wh) => wh.company_id === selectedCompany);
-  }, [selectedCompany, assignedWarehouses]);
+    loadCompanies();
+  }, []);
+
+  // Charger les entrepôts pour l'entreprise sélectionnée
+  useEffect(() => {
+    const loadWarehouses = async () => {
+      if (!selectedCompany) {
+        setWarehouses([]);
+        return;
+      }
+
+      try {
+        const warehousesData = await warehousesApi.getByCompany(
+          selectedCompany
+        );
+        setWarehouses(warehousesData);
+      } catch (error) {
+        console.error("Erreur lors du chargement des entrepôts:", error);
+        message.error("Erreur lors du chargement des entrepôts");
+      }
+    };
+
+    loadWarehouses();
+  }, [selectedCompany]);
+
+  const availableCompanies = companies;
+  const warehousesForSelectedCompany = warehouses;
 
   useEffect(() => {
     console.log(
-      "[RightSideNav Effect] Running checks. Assigned WH:",
-      assignedWarehouses.length,
-      "Available Comp:",
+      "[RightSideNav Effect] Running checks. Companies:",
       availableCompanies.length
     );
-    if (authLoading || !user) return;
+    if (loading) return;
 
-    if (assignedWarehouses.length === 0) {
+    if (availableCompanies.length === 0) {
       if (selectedCompany) setSelectedCompany(null);
       if (selectedWarehouse) setSelectedWarehouse(null);
       console.log(
-        "[RightSideNav Effect] No assigned warehouses, cleared selections."
+        "[RightSideNav Effect] No companies available, cleared selections."
       );
       return;
     }
@@ -107,15 +126,13 @@ const RightSideNav = () => {
       setSelectedWarehouse(singleWarehouseId);
     }
   }, [
-    user,
-    assignedWarehouses,
+    loading,
     availableCompanies,
     selectedCompany,
     selectedWarehouse,
     setSelectedCompany,
     setSelectedWarehouse,
     warehousesForSelectedCompany,
-    authLoading,
   ]);
 
   const handleCompanyChange = (value) => {
@@ -147,7 +164,7 @@ const RightSideNav = () => {
     );
   }
 
-  if (!user || assignedWarehouses.length === 0) {
+  if (availableCompanies.length === 0) {
     return (
       <div className="right-nav flex items-center justify-end w-full sm:w-auto">
         <Space direction="vertical" className="sm:flex-row gap-2">
