@@ -4,7 +4,6 @@
   "description": "Backend API pour ElsaGestion - Node.js/Express avec Supabase PostgreSQL",
   "main": "start.js",
   "scripts": {
-    "build": "echo 'Build completed successfully - No compilation needed for Node.js backend'",
     "start": "node start.js",
     "server": "nodemon app.js",
     "dev": "nodemon app.js",
@@ -33,12 +32,5 @@
     "node": ">=16.0.0",
     "npm": ">=8.0.0"
   },
-  "keywords": [
-    "nodejs",
-    "express",
-    "backend",
-    "api",
-    "supabase",
-    "postgresql"
-  ]
+  "keywords": ["nodejs", "express", "backend", "api", "supabase", "postgresql"]
 }

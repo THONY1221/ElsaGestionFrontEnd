@@ -10,8 +10,10 @@ import React, {
 // 1. Créer le contexte
 const AuthContext = createContext(null);
 
-// URL de base de l'API - idéalement à récupérer d'une configuration centralisée
-const API_BASE_URL = "http://localhost:3000"; // Ajuster selon votre configuration
+// URL de base de l'API - récupérée depuis les variables d'environnement
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL ||
+  "https://elsa-gestion-backend-wf4l.onrender.com"; // Backend Render PostgreSQL
 
 // 2. Créer le Provider
 export const AuthProvider = ({ children }) => {
