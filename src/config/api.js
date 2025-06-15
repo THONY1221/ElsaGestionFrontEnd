@@ -3,7 +3,6 @@
 
 // URL de base du backend - récupérée depuis les variables d'environnement
 export const API_BASE_URL =
-  process.env.REACT_APP_API_BASE_URL ||
   process.env.REACT_APP_API_URL ||
   "https://elsa-gestion-backend-wf4l.onrender.com";
 
@@ -88,8 +87,3 @@ export const buildApiUrl = (endpoint, params = {}) => {
 
   return url;
 };
-
-console.log("🔗 Configuration API chargée:", {
-  baseURL: API_BASE_URL,
-  environment: process.env.NODE_ENV,
-});
