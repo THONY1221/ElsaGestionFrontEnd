@@ -4,7 +4,8 @@ import { Select, Space, message, Spin } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { useSelection } from "./SelectionContext";
 import { useAuth } from "./context/AuthContext";
-import { companiesApi, warehousesApi } from "./api/supabaseApi";
+import axios from "axios";
+import { API_ENDPOINTS } from "./config/api";
 
 const { Option } = Select;
 
@@ -22,13 +23,13 @@ const RightSideNav = () => {
   const [warehouses, setWarehouses] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Charger les entreprises depuis Supabase
+  // Charger les entreprises
   useEffect(() => {
     const loadCompanies = async () => {
       try {
         setLoading(true);
-        const companiesData = await companiesApi.getAll();
-        setCompanies(companiesData);
+        const response = await axios.get(API_ENDPOINTS.COMPANIES);
+        setCompanies(response.data);
       } catch (error) {
         console.error("Erreur lors du chargement des entreprises:", error);
         message.error("Erreur lors du chargement des entreprises");
@@ -49,10 +50,9 @@ const RightSideNav = () => {
       }
 
       try {
-        const warehousesData = await warehousesApi.getByCompany(
-          selectedCompany
-        );
-        setWarehouses(warehousesData);
+        const url = `${API_ENDPOINTS.WAREHOUSES}/company/${selectedCompany}`;
+        const response = await axios.get(url);
+        setWarehouses(response.data);
       } catch (error) {
         console.error("Erreur lors du chargement des entrepôts:", error);
         message.error("Erreur lors du chargement des entrepôts");
