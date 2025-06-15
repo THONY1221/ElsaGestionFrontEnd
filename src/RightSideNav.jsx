@@ -5,7 +5,10 @@ import { DownOutlined } from "@ant-design/icons";
 import { useSelection } from "./SelectionContext";
 import { useAuth } from "./context/AuthContext";
 import axios from "axios";
-import { API_ENDPOINTS } from "./config/api";
+import { API_ENDPOINTS, DEFAULT_AXIOS_CONFIG } from "./config/api";
+
+// Create configured axios instance
+const axiosInstance = axios.create(DEFAULT_AXIOS_CONFIG);
 
 const { Option } = Select;
 
@@ -28,7 +31,7 @@ const RightSideNav = () => {
     const loadCompanies = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(API_ENDPOINTS.COMPANIES);
+        const response = await axiosInstance.get("/api/companies");
         // La réponse est maintenant un objet { companies: [], pagination: {} }
         if (response.data && Array.isArray(response.data.companies)) {
           setCompanies(response.data.companies);
@@ -56,8 +59,9 @@ const RightSideNav = () => {
       }
 
       try {
-        const url = `${API_ENDPOINTS.WAREHOUSES}/company/${selectedCompany}`;
-        const response = await axios.get(url);
+        const response = await axiosInstance.get(
+          `/api/warehouses/company/${selectedCompany}`
+        );
         setWarehouses(response.data);
       } catch (error) {
         console.error("Erreur lors du chargement des entrepôts:", error);
