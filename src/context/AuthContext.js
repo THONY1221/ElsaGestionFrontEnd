@@ -6,14 +6,10 @@ import React, {
   useCallback,
   useRef,
 } from "react";
+import axiosInstance from "../api/axios";
 
 // 1. Créer le contexte
 const AuthContext = createContext(null);
-
-// URL de base de l'API - récupérée depuis les variables d'environnement
-const API_BASE_URL =
-  process.env.REACT_APP_API_BASE_URL ||
-  "https://elsa-gestion-backend-wf4l.onrender.com"; // Backend Render PostgreSQL
 
 // 2. Créer le Provider
 export const AuthProvider = ({ children }) => {
@@ -69,22 +65,15 @@ export const AuthProvider = ({ children }) => {
       );
 
       try {
-        const response = await fetch(
-          `${API_BASE_URL}/api/users/${user.id}/permissions`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
+        const response = await axiosInstance.get(
+          `/api/users/${user.id}/permissions`
         );
 
-        if (!response.ok) {
+        if (response.status !== 200) {
           console.error(
             "Permission refresh failed with status:",
             response.status
           );
-          // Si l'utilisateur n'est pas trouvé (404), le déconnecter
           if (response.status === 404) {
             console.log(
               "[refreshUserPermissions] User not found (404), logging out."
@@ -96,7 +85,7 @@ export const AuthProvider = ({ children }) => {
           );
         }
 
-        const data = await response.json();
+        const data = response.data;
         const updatedPermissions = data.permissions || data;
 
         console.log(
@@ -158,7 +147,7 @@ export const AuthProvider = ({ children }) => {
         }
       }
     },
-    [token, user, logout] // Ajout de logout aux dépendances
+    [token, user, logout]
   );
 
   // **MODIFIED Fonction pour rafraîchir le statut ET les assignations de l'utilisateur**
@@ -181,18 +170,9 @@ export const AuthProvider = ({ children }) => {
     );
 
     try {
-      const response = await fetch(
-        `${API_BASE_URL}/api/users/${userIdToFetch}`,
-        {
-          // Fetch using the captured ID
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axiosInstance.get(`/api/users/${userIdToFetch}`);
 
-      if (!response.ok) {
+      if (response.status !== 200) {
         console.error(
           `[refreshUserStatus] Fetch failed for User ID ${userIdToFetch} with status: ${response.status}`
         );
@@ -210,7 +190,7 @@ export const AuthProvider = ({ children }) => {
         throw new Error(`Failed to refresh status: ${response.statusText}`);
       }
 
-      const fetchedUserData = await response.json();
+      const fetchedUserData = response.data;
       console.log(
         `[refreshUserStatus] Fetched user data for User ID ${userIdToFetch}:`,
         fetchedUserData
@@ -284,7 +264,7 @@ export const AuthProvider = ({ children }) => {
         // logout();
       }
     }
-  }, [token, user, logout]); // Keep dependencies: token, user (to get latest user state), logout
+  }, [token, user, logout]);
 
   // Effet pour vérifier le token au chargement initial
   useEffect(() => {
