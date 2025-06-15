@@ -29,7 +29,13 @@ const RightSideNav = () => {
       try {
         setLoading(true);
         const response = await axios.get(API_ENDPOINTS.COMPANIES);
-        setCompanies(response.data);
+        // La réponse est maintenant un objet { companies: [], pagination: {} }
+        if (response.data && Array.isArray(response.data.companies)) {
+          setCompanies(response.data.companies);
+        } else {
+          // Gérer le cas où le format est inattendu, par ex. si l'ancienne API est renvoyée
+          setCompanies(response.data);
+        }
       } catch (error) {
         console.error("Erreur lors du chargement des entreprises:", error);
         message.error("Erreur lors du chargement des entreprises");
