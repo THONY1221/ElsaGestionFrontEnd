@@ -4,8 +4,7 @@ import { Select, Space, message, Spin } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { useSelection } from "./SelectionContext";
 import { useAuth } from "./context/AuthContext";
-import axiosInstance from "./api/axios";
-import { API_ENDPOINTS } from "./config/api";
+import apiClient from "./config/api";
 
 const { Option } = Select;
 
@@ -28,18 +27,16 @@ const RightSideNav = () => {
     const loadCompanies = async () => {
       try {
         setLoading(true);
-        const response = await axiosInstance.get("/api/companies");
+        const response = await apiClient.get("/api/companies");
+        // La réponse est maintenant un objet { companies: [], pagination: {} }
         if (response.data && Array.isArray(response.data.companies)) {
           setCompanies(response.data.companies);
         } else {
+          // Gérer le cas où le format est inattendu, par ex. si l'ancienne API est renvoyée
           setCompanies(response.data);
         }
       } catch (error) {
-        console.error("Detailed error when loading companies:", {
-          message: error.message,
-          response: error.response,
-          config: error.config,
-        });
+        console.error("Erreur lors du chargement des entreprises:", error);
         message.error("Erreur lors du chargement des entreprises");
       } finally {
         setLoading(false);
@@ -58,7 +55,7 @@ const RightSideNav = () => {
       }
 
       try {
-        const response = await axiosInstance.get(
+        const response = await apiClient.get(
           `/api/warehouses/company/${selectedCompany}`
         );
         setWarehouses(response.data);
@@ -70,15 +67,6 @@ const RightSideNav = () => {
 
     loadWarehouses();
   }, [selectedCompany]);
-
-  // Update the axios instance configuration to include the auth token
-  useEffect(() => {
-    if (user) {
-      axiosInstance.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${localStorage.getItem("authToken")}`;
-    }
-  }, [user]);
 
   const availableCompanies = companies;
   const warehousesForSelectedCompany = warehouses;

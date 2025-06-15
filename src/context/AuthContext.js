@@ -6,7 +6,7 @@ import React, {
   useCallback,
   useRef,
 } from "react";
-import axiosInstance from "../api/axios";
+import apiClient, { API_BASE_URL } from "../config/api";
 
 // 1. Créer le contexte
 const AuthContext = createContext(null);
@@ -65,25 +65,9 @@ export const AuthProvider = ({ children }) => {
       );
 
       try {
-        const response = await axiosInstance.get(
+        const response = await apiClient.get(
           `/api/users/${user.id}/permissions`
         );
-
-        if (response.status !== 200) {
-          console.error(
-            "Permission refresh failed with status:",
-            response.status
-          );
-          if (response.status === 404) {
-            console.log(
-              "[refreshUserPermissions] User not found (404), logging out."
-            );
-            logout();
-          }
-          throw new Error(
-            `Failed to refresh permissions: ${response.statusText}`
-          );
-        }
 
         const data = response.data;
         const updatedPermissions = data.permissions || data;
@@ -147,7 +131,7 @@ export const AuthProvider = ({ children }) => {
         }
       }
     },
-    [token, user, logout]
+    [token, user, logout] // Ajout de logout aux dépendances
   );
 
   // **MODIFIED Fonction pour rafraîchir le statut ET les assignations de l'utilisateur**
@@ -170,25 +154,7 @@ export const AuthProvider = ({ children }) => {
     );
 
     try {
-      const response = await axiosInstance.get(`/api/users/${userIdToFetch}`);
-
-      if (response.status !== 200) {
-        console.error(
-          `[refreshUserStatus] Fetch failed for User ID ${userIdToFetch} with status: ${response.status}`
-        );
-        if (
-          response.status === 404 ||
-          response.status >= 500 ||
-          response.status === 401 ||
-          response.status === 403
-        ) {
-          console.log(
-            `[refreshUserStatus] User status check failed (${response.status}) for User ID ${userIdToFetch}, logging out.`
-          );
-          logout();
-        }
-        throw new Error(`Failed to refresh status: ${response.statusText}`);
-      }
+      const response = await apiClient.get(`/api/users/${userIdToFetch}`);
 
       const fetchedUserData = response.data;
       console.log(
@@ -264,7 +230,7 @@ export const AuthProvider = ({ children }) => {
         // logout();
       }
     }
-  }, [token, user, logout]);
+  }, [token, user, logout]); // Keep dependencies: token, user (to get latest user state), logout
 
   // Effet pour vérifier le token au chargement initial
   useEffect(() => {
