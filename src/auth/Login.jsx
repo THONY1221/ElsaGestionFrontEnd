@@ -21,6 +21,11 @@ import { useAuth } from "../context/AuthContext";
 
 const { Title, Text } = Typography;
 
+// URL de base de l'API - récupérée depuis les variables d'environnement
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL ||
+  "https://elsa-gestion-backend-wf4l.onrender.com";
+
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -34,8 +39,8 @@ const Login = () => {
     console.log("Login attempt with:", values);
 
     try {
-      // --> Replace with your actual API endpoint <--
-      const response = await axios.post("/api/login", {
+      // Appel à l'API de connexion sur le backend Render.com
+      const response = await axios.post(`${API_BASE_URL}/api/login`, {
         email: values.email,
         password: values.password,
       });

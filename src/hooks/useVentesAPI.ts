@@ -1,10 +1,11 @@
 import { useCallback } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../config/api";
 
 // Création d'une instance axios avec la configuration de base
 const api = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: `${API_BASE_URL}/api`,
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",

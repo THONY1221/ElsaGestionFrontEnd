@@ -6,6 +6,7 @@ import React, {
   useRef,
 } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../config/api";
 import {
   Layout,
   Input,
@@ -152,13 +153,10 @@ const GestionPos: React.FC = () => {
   const testPaymentAPIConnectivity = async () => {
     try {
       console.log("🔍 Test de connectivité API paiement...");
-      const response = await axios.get(
-        "http://localhost:3000/api/payments/totals",
-        {
-          timeout: 5000,
-          params: { company_id: 1 }, // Test simple avec company_id
-        }
-      );
+      const response = await axios.get(`${API_BASE_URL}/api/payments/totals`, {
+        timeout: 5000,
+        params: { company_id: 1 }, // Test simple avec company_id
+      });
       console.log("✅ API paiement accessible - Status:", response.status);
       return true;
     } catch (error: any) {
